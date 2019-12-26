@@ -1,0 +1,4 @@
+name: MCSocket
+version: ${project.version}
+main: org.sct.mcsocket.MCSocket
+api-version: 1.13

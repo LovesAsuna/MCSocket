@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="MCSocket">
+    <output-path>$PROJECT_DIR$/../../1.14.4test/plugins</output-path>
+    <root id="archive" name="MCSocket.jar">
+      <element id="module-output" name="MCSocket" />
+    </root>
+  </artifact>
+</component>
