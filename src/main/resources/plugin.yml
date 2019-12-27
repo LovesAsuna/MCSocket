@@ -2,3 +2,10 @@ name: MCSocket
 version: ${project.version}
 main: org.sct.mcsocket.MCSocket
 api-version: 1.13
+description: MCSocket
+commands:
+  mcsocket:
+    usage: "/mcsocket"
+    description: none
+    aliases: [mcs]
+

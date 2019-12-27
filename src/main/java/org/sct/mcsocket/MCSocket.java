@@ -2,6 +2,7 @@ package org.sct.mcsocket;
 
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.sct.mcsocket.command.CommandHandler;
 import org.sct.mcsocket.data.SocketData;
 import org.sct.mcsocket.event.SocketComeEvent;
 import org.sct.mcsocket.listener.SocketComeLIstener;
@@ -25,7 +26,9 @@ public final class MCSocket extends JavaPlugin {
         /*注册监听器*/
         ListenerManager.register();
 
-        Bukkit.getPluginManager().registerEvents(new SocketComeLIstener(), this);
+        /*注册命令*/
+        Bukkit.getPluginCommand("mcsocket").setExecutor(new CommandHandler());
+
         Bukkit.getPluginManager().callEvent(new SocketComeEvent(SocketData.getServerSocket()));
         getServer().getConsoleSender().sendMessage("§7[§eMCSocket§7]§2插件已加载");
     }

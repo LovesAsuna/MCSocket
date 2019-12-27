@@ -2,6 +2,7 @@ package org.sct.mcsocket.util;
 
 import lombok.Getter;
 import org.bukkit.Bukkit;
+import org.bukkit.entity.Player;
 import org.sct.mcsocket.MCSocket;
 import org.sct.mcsocket.data.SocketData;
 import org.sct.mcsocket.enumeration.ConfigType;
@@ -10,6 +11,7 @@ import org.sct.mcsocket.file.Config;
 import java.io.*;
 import java.net.Socket;
 import java.util.Base64;
+import java.util.List;
 import java.util.Scanner;
 
 public class SocketThread {
@@ -64,6 +66,30 @@ public class SocketThread {
                     writer.println("服务器已接受到命令发送请求!");
                     writer.flush();
 
+                }
+
+                /*如果包含返回玩家列表信息*/
+                if (debase64.trim().equalsIgnoreCase("/showplayerlist")) {
+                    List<Player> playerList = SocketData.getPlayerList();
+                    playerList.clear();
+                    Bukkit.getOnlinePlayers().stream().forEach(player ->
+                            playerList.add(player));
+
+
+
+                    int i = 0;
+                    String playerlist = "总玩家在线数: " + playerList.size() + "*————————————————————————*";
+                    for (Player player : playerList) {
+                        i++;
+                        playerlist += player.getName() + " ";
+                        if (i == 4) {
+                            i = 0;
+                            playerlist += "*";
+                        }
+                    }
+
+                    writer.println(playerlist);
+                    System.out.println(playerlist);
                 }
 
 
